@@ -23,6 +23,6 @@ declare module "@livechat/accounts-sdk" {
     popup(): AccountsSDK;
     redirect(): any;
     authorize(): Promise<AuthorizedPayload>;
-    verify(data: AuthorizedPayload): boolean;
+    verify(data: AuthorizedPayload): { state: string };
   }
 }

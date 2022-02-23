@@ -1,30 +1,23 @@
-import { AuthorizedPayload } from "@livechat/accounts-sdk";
 import { Button, Card, Loader } from "@livechat/design-system";
 import { useCallback, useLayoutEffect, useState } from "preact/hooks";
 
-import { instance } from "./services";
+import { authorize } from "./services";
+
+interface CredentialsPayload {
+  username: number;
+  password: string;
+}
 
 export function App() {
   const [isLoading, setLoading] = useState(true);
   const [isLogged, setLogged] = useState(false);
-  const [authUser, setAuthUser] = useState<AuthorizedPayload>();
+  const [credentials, setCredentials] = useState<CredentialsPayload>();
 
   const handleLogin = useCallback(() => {
-    return instance
-      .popup()
-      .authorize()
-      .then((authorizeData) => {
-        const transactionData = instance.verify(authorizeData);
-
-        if (transactionData) {
-          // const data = await getToken(authorizeData, transactionData);
-
-          setAuthUser(authorizeData);
-          setLogged(true);
-        } else {
-          // nothing
-        }
-      });
+    return authorize().then((authorizeData) => {
+      setCredentials(authorizeData);
+      setLogged(true);
+    });
   }, []);
 
   useLayoutEffect(() => {
@@ -44,15 +37,23 @@ export function App() {
   if (isLogged) {
     return (
       <div className="flex flex-col w-screen h-screen justify-center items-center">
-        <h2>Hello user</h2>
-        <span>Your are logged in.</span>
+        <h2>You are logged in</h2>
+        <Card style={{ width: "400px" }}>
+          <div className="grid grid-col-2" style={{ "grid-gap": "20px 0" }}>
+            <div className="bold">Username</div>
+            <div>{credentials?.username}</div>
+
+            <div className="bold">Password</div>
+            <div className="text-break">{credentials?.password}</div>
+          </div>
+        </Card>
       </div>
     );
   }
 
   return (
     <div className="flex flex-col w-screen h-screen justify-center items-center">
-      <Card style={{ width: "300px" }} title="Login via LiveChat">
+      <Card style={{ width: "400px" }} title="Login via LiveChat">
         <h2>Login</h2>
         <Button kind="primary" onClick={handleLogin}>
           Login
