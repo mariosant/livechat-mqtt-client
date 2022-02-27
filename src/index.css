@@ -1,91 +1,47 @@
 @import url("@livechat/design-system/dist/design-system.css");
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;600&family=Source+Sans+Pro:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .text-header-3xl {
+    @apply text-3xl font-semibold font-merriweather leading-10;
+  }
+
+  .text-header-2xl {
+    @apply text-2xl font-semibold font-merriweather leading-7;
+  }
+
+  .text-header-xl {
+    @apply text-xl font-semibold font-merriweather leading-6;
+  }
+
+  .text-header-lg {
+    @apply text-xl font-semibold font-merriweather leading-6;
+  }
+
+  .text-header-md {
+    @apply text-lg font-semibold font-merriweather leading-6;
+  }
+
+  .text-body {
+    @apply font-source-sans font-normal leading-6;
+  }
+
+  .text-meta {
+    @apply text-sm font-source-sans font-normal leading-5;
+  }
+  
+  .text-caption {
+    @apply text-xs font-source-sans font-normal leading-4;
+  }
+}
 
 html,
 body {
   height: 100%;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  background: #fafafa;
-  font-family: "Helvetica Neue", arial, sans-serif;
-  font-weight: 400;
-  color: #444;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-#app {
-  color: #333;
-  font-size: 1.5em;
-}
-
-.flex {
-  display: flex;
-}
-
-.flex-row {
-  flex-direction: row;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.w-screen {
-  width: 100vw;
-}
-
-.h-screen {
-  height: 100vh;
-}
-
-.link {
-  color: #fff;
-}
-
-.grid {
-  display: grid;
-}
-
-.grid-col-2 {
-  grid-template-columns: 30% 70%;
-}
-
-.grid-row-2 {
-  grid-template-rows: 50% 50%;
-}
-
-.gap-2 {
-  gap: 2px 2px;
-}
-.gap-1em {
-  gap: 1em;
-}
-
-.gap-4 {
-  gap: 4px;
-}
-
-.bold {
-  font-weight: bold;
-}
-.text-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.text-break {
-  overflow-wrap: break-word;
-}
