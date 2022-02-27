@@ -112,6 +112,7 @@ module.exports = {
     fontFamily: {
       merriweather: ["Merriweather Sans", "sans-serif"],
       "source-sans": ["Source Sans Pro", "sans-serif"],
+      monospace: ["monospace"],
     },
     fontSize: {
       xs: "13px",
